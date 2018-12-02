@@ -6,6 +6,7 @@ public class ParsingMode {
     public static final ParsingMode LENIENT = new Builder()
             .allowUnknownTags()
             .allowNegativeNumbers()
+            .allowUnkownAttributes()
             .build();
 
     /**
@@ -18,14 +19,21 @@ public class ParsingMode {
      */
     public final boolean allowNegativeNumbers;
 
-    private ParsingMode(final boolean allowUnknownTags, final boolean allowNegativeNumbers) {
+    /**
+     * If true, negative numbers in violation of the specification will not throw an exception.
+     */
+    public final boolean allowUnkownAttributes;
+
+    private ParsingMode(final boolean allowUnknownTags, final boolean allowNegativeNumbers, final boolean allowUnkownAttributes) {
         this.allowUnknownTags = allowUnknownTags;
         this.allowNegativeNumbers = allowNegativeNumbers;
+        this.allowUnkownAttributes = allowUnkownAttributes;
     }
 
     public static class Builder {
         private boolean mAllowUnknownTags = false;
         private boolean mAllowNegativeNumbers = false;
+        private boolean allowUnkownAttributes = false;
 
         /**
          * Call to prevent throwing an exception when parsing unrecognized tags.
@@ -43,8 +51,16 @@ public class ParsingMode {
             return this;
         }
 
+        /**
+         * Call to prevent throwing an exception when parsing unkown attributes in EXT-X-STREAM-INF.
+         */
+        public Builder allowUnkownAttributes() {
+            allowUnkownAttributes = true;
+            return this;
+        }
+
         public ParsingMode build() {
-            return new ParsingMode(mAllowUnknownTags, mAllowNegativeNumbers);
+            return new ParsingMode(mAllowUnknownTags, mAllowNegativeNumbers, allowUnkownAttributes);
         }
     }
 }

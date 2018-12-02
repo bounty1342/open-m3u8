@@ -1,15 +1,23 @@
 package com.iheartradio.m3u8;
 
-import com.iheartradio.m3u8.data.ByteRange;
-import com.iheartradio.m3u8.data.Resolution;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.iheartradio.m3u8.data.ByteRange;
+import com.iheartradio.m3u8.data.Resolution;
+
 final class ParseUtil {
+
+    public static ParsingMode parsingMode;
+
     public static int parseInt(String string, String tag) throws ParseException {
         try {
             return Integer.parseInt(string);
@@ -169,7 +177,9 @@ final class ParseUtil {
             if (handlers.containsKey(attribute.name)) {
                 handlers.get(attribute.name).parse(attribute, builder, state);
             } else {
-                throw ParseException.create(ParseExceptionType.INVALID_ATTRIBUTE_NAME, tag, line);
+                if(parsingMode != null && !parsingMode.allowUnkownAttributes) {
+                    throw ParseException.create(ParseExceptionType.INVALID_ATTRIBUTE_NAME, tag, line);
+                }
             }
         }
     }

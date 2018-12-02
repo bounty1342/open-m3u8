@@ -20,7 +20,7 @@ public class PlaylistParser implements IPlaylistParser {
     public PlaylistParser(InputStream inputStream, Format format, String filename) {
         this(inputStream, format, parseExtension(filename), ParsingMode.STRICT);
     }
-    
+
     /**
      * @param inputStream an open input stream positioned at the beginning of the file
      * @param format requires the playlist to be this format
@@ -30,7 +30,7 @@ public class PlaylistParser implements IPlaylistParser {
     public PlaylistParser(InputStream inputStream, Format format, String filename, ParsingMode parsingMode) {
         this(inputStream, format, parseExtension(filename), parsingMode);
     }
-    
+
     /**
      * Equivalent to:
      * <pre>
@@ -66,7 +66,7 @@ public class PlaylistParser implements IPlaylistParser {
     public PlaylistParser(InputStream inputStream, Format format, Encoding encoding) {
         this(inputStream, format, encoding, ParsingMode.STRICT);
     }
-    
+
     /**
      * @param inputStream an open input stream positioned at the beginning of the file
      * @param format requires the playlist to be this format
@@ -90,15 +90,16 @@ public class PlaylistParser implements IPlaylistParser {
             throw new IllegalArgumentException("parsingMode is null");
         }
 
+        ParseUtil.parsingMode = parsingMode;
         switch (format) {
-            case M3U:
-                mPlaylistParser = new M3uParser(inputStream, encoding);
-                break;
-            case EXT_M3U:
-                mPlaylistParser = new ExtendedM3uParser(inputStream, encoding, parsingMode);
-                break;
-            default:
-                throw new RuntimeException("unsupported format detected, this should be impossible: " + format);
+        case M3U:
+            mPlaylistParser = new M3uParser(inputStream, encoding);
+            break;
+        case EXT_M3U:
+            mPlaylistParser = new ExtendedM3uParser(inputStream, encoding, parsingMode);
+            break;
+        default:
+            throw new RuntimeException("unsupported format detected, this should be impossible: " + format);
         }
     }
 
