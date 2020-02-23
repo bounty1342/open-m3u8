@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 final class Constants {
     public static final String MIME_TYPE = "application/vnd.apple.mpegurl";
     public static final String MIME_TYPE_COMPATIBILITY = "audio/mpegurl";
-    
+
     public static final String ATTRIBUTE_SEPARATOR = "=";
     public static final char COMMA_CHAR = ',';
     public static final String COMMA = Character.toString(COMMA_CHAR);
@@ -41,7 +41,7 @@ final class Constants {
     public static  final String IN_STREAM_ID = "INSTREAM-ID";
     public static  final String CHARACTERISTICS = "CHARACTERISTICS";
     public static  final String CHANNELS = "CHANNELS";
-    
+
     public static final String EXT_X_STREAM_INF_TAG = "EXT-X-STREAM-INF";
     public static final String EXT_X_I_FRAME_STREAM_INF_TAG = "EXT-X-I-FRAME-STREAM-INF";
     public static final String BANDWIDTH = "BANDWIDTH";
@@ -55,17 +55,17 @@ final class Constants {
     public static final String AUDIO = "AUDIO";
     public static final String SUBTITLES = "SUBTITLES";
     public static final String CLOSED_CAPTIONS = "CLOSED-CAPTIONS";
-    
+
 
     // media playlist tags
-    
+
     public static final String EXT_X_PLAYLIST_TYPE_TAG = "EXT-X-PLAYLIST-TYPE";
     public static final String EXT_X_PROGRAM_DATE_TIME_TAG = "EXT-X-PROGRAM-DATE-TIME";
     public static final String EXT_X_TARGETDURATION_TAG = "EXT-X-TARGETDURATION";
     public static final String EXT_X_START_TAG = "EXT-X-START";
     public static final String TIME_OFFSET = "TIME-OFFSET";
     public static final String PRECISE = "PRECISE";
-    
+
     public static final String EXT_X_MEDIA_SEQUENCE_TAG = "EXT-X-MEDIA-SEQUENCE";
     public static final String EXT_X_ALLOW_CACHE_TAG = "EXT-X-ALLOW-CACHE";
     public static final String EXT_X_ENDLIST_TAG = "EXT-X-ENDLIST";
@@ -111,7 +111,7 @@ final class Constants {
 
     public static final int[] UTF_8_BOM_BYTES = {0xEF, 0xBB, 0xBF};
     public static final char UNICODE_BOM = '\uFEFF';
-    public static final int MAX_COMPATIBILITY_VERSION = 5;
+    public static final int MAX_COMPATIBILITY_VERSION = Integer.MAX_VALUE;
     public static final int IV_SIZE = 16;
     //Against the spec but used by Adobe
     public static final int IV_SIZE_ALTERNATIVE = 32;
