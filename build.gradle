@@ -14,6 +14,7 @@ plugins {
 
 repositories {
     mavenCentral()
+    maven { url "http://oss.sonatype.org/content/repositories/snapshots" } 
 }
 
 apply plugin: 'java'
@@ -39,6 +40,7 @@ dependencies {
     testRuntime "org.slf4j:slf4j-log4j12:1.7.5"
     testRuntime "log4j:log4j:1.2.7"
 }
+
 
 task javadocJar(type: Jar) {
     classifier = 'javadoc'
