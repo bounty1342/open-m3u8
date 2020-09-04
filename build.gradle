@@ -8,7 +8,8 @@ buildscript {
 }
 
 plugins {
-    id 'net.saliman.cobertura' version '2.2.7'
+  id "net.saliman.cobertura" version "3.0.0"
+  id "com.github.johnrengelman.shadow" version "6.0.0"
 }
 
 repositories {
@@ -19,7 +20,7 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'maven'
 apply plugin: 'signing'
-apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'shadow'
 
 idea {
     module {
