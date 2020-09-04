@@ -110,6 +110,7 @@ shadowJar {
 }
 
 
-task wrapper(type: Wrapper) {
-    gradleVersion = "2.8"
+wrapper {
+    gradleVersion = '6.0.1'
+    distributionUrl = distributionUrl.replace("bin", "all")
 }
