@@ -19,6 +19,7 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'maven'
 apply plugin: 'signing'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 idea {
     module {
@@ -100,6 +101,11 @@ uploadArchives {
         }
     }
 }
+
+shadowJar {
+    zip64 true
+}
+
 
 task wrapper(type: Wrapper) {
     gradleVersion = "2.8"
