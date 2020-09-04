@@ -1,6 +1,5 @@
 buildscript {
     repositories {
-        maven { url "http://oss.sonatype.org/content/repositories/snapshots" }
         mavenCentral()
     }
 
@@ -9,12 +8,11 @@ buildscript {
 }
 
 plugins {
-  id "net.saliman.cobertura" version "3.0.1-SNAPSHOT"
+  id "net.saliman.cobertura" version "3.0.0"
   id "com.github.johnrengelman.shadow" version "6.0.0"
 }
 
 repositories {
-    maven { url "http://oss.sonatype.org/content/repositories/snapshots" }
     mavenCentral()
 }
 
